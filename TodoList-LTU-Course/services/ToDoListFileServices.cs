@@ -1,0 +1,38 @@
+using Avalonia.Controls.Shapes;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
+using TodoList_LTU_Course.Models;
+using Path = System.IO.Path;
+
+namespace TodoList_LTU_Course.services;
+
+public class ToDoListFileServices
+{
+    private static string _jsonFileName =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "Avalonia.TodoList-LTU-Course", "MyToDoList.txt");
+
+    public static async Task saveFileAsync(IEnumerable<ToDoItem> itemsToSave)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(_jsonFileName)!);
+        using (FileStream fs = File.Create(_jsonFileName))
+            await JsonSerializer.SerializeAsync(fs, itemsToSave);
+        
+    }
+
+    public static async Task<IEnumerable<ToDoItem>?> loadFileAsync()
+    {
+        try
+        {
+            using (FileStream fs = File.OpenRead(_jsonFileName))
+                return await JsonSerializer.DeserializeAsync<IEnumerable<ToDoItem>>(fs);            
+        }
+        catch (Exception e) when (e is FileNotFoundException || e is DirectoryNotFoundException)
+        {
+            return null;
+        }
+    }
+}
