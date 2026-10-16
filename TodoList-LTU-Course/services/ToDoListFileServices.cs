@@ -18,17 +18,16 @@ public class ToDoListFileServices
     public static async Task saveFileAsync(IEnumerable<ToDoItem> itemsToSave)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(_jsonFileName)!);
-        using (FileStream fs = File.Create(_jsonFileName))
-            await JsonSerializer.SerializeAsync(fs, itemsToSave);
-        
+        await using FileStream fs = File.Create(_jsonFileName);
+        await JsonSerializer.SerializeAsync(fs, itemsToSave);
     }
 
     public static async Task<IEnumerable<ToDoItem>?> loadFileAsync()
     {
         try
         {
-            using (FileStream fs = File.OpenRead(_jsonFileName))
-                return await JsonSerializer.DeserializeAsync<IEnumerable<ToDoItem>>(fs);            
+            await using FileStream fs = File.OpenRead(_jsonFileName);
+            return await JsonSerializer.DeserializeAsync<IEnumerable<ToDoItem>>(fs);
         }
         catch (Exception e) when (e is FileNotFoundException || e is DirectoryNotFoundException)
         {

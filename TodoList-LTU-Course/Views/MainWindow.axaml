@@ -21,8 +21,8 @@
                     <DataTemplate DataType="vm:ToDoItemViewModel">
                         <Grid ColumnDefinitions="*, Auto">
                             <CheckBox Content="{Binding Content}"
-                                      IsCancel="{Binding IsChecked}"/>
-                            <Button Command="{Binding #Root.((vm:MainViewModel)DataContext).RemoveItemCommand}"
+                                      IsChecked="{Binding IsChecked}"/>
+                            <Button Command="{Binding #Root.((vm:MainViewModel)DataContext)?.RemoveItemCommand}"
                                     CommandParameter="{Binding .}"
                                     Grid.Column="1">
                                 Delete

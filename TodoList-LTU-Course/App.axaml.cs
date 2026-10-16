@@ -30,6 +30,15 @@ public partial class App : Application
         }
     }
 
+    private async Task InitMainViewModelAsync()
+    {
+        IEnumerable<ToDoItem>? itemLoaded = await ToDoListFileServices.loadFileAsync();
+        if (itemLoaded is not null)
+        {
+            foreach (ToDoItem item in itemLoaded)
+                _mainViewModel.ToDoItems.Add(new ToDoItemViewModel(item));
+        }
+    }
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -50,13 +59,5 @@ public partial class App : Application
         await InitMainViewModelAsync();
     }
 
-    private async Task InitMainViewModelAsync()
-    {
-        IEnumerable<ToDoItem> itemLoaded = await ToDoListFileServices.loadFileAsync();
-        if (itemLoaded is not null)
-        {
-            foreach (ToDoItem item in itemLoaded)
-                _mainViewModel.ToDoItems.Add(new ToDoItemViewModel(item));
-        }
-    }
+
 }
