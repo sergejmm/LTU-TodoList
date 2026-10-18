@@ -1,13 +1,13 @@
-using Avalonia.Controls.Shapes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-using TodoList_LTU_Course.Models;
-using Path = System.IO.Path;
+using LTU_Course_Final.Models;
 
-namespace TodoList_LTU_Course.services;
+namespace LTU_Course_Final.Services;
+
+using Path = Path;
 
 public class ToDoListFileServices
 {

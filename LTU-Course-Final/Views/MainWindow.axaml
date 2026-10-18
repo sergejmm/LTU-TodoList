@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LTU_Course_Final.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LTU_Course_Final.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="LTU_Course_Final">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="Auto, *" x:Name="Root" ColumnSpacing="50">
+        <StackPanel Spacing="15">
+            <StackPanel Spacing="3" MaxWidth="300">
+                <TextBlock Text="Ny Uppgift: " />
+                <TextBox PlaceholderText="inmatningstext" Text="{Binding NewItemName}" />
+            </StackPanel>
+            <StackPanel Spacing="3" MaxWidth="300">
+                <TextBlock Text="Plats: " />
+                <TextBox PlaceholderText="inmatningstext" Text="{Binding NewItemLocation}" />
+            </StackPanel>
+            <StackPanel Spacing="3">
+                <TextBlock Text="Dautm:" />
+                <DatePicker DayFormat="ddd dd" SelectedDate="{Binding NewItemDate}" />
+            </StackPanel>
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="inställningar:" />
+                <CheckBox Content="Viktig" IsChecked="{Binding NewItemImportant}" />
+            </StackPanel>
+            <Button Content="Lägg till" Command="{Binding AddItemCommand}" IsDefault="True" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" Spacing="10">
+            <TextBlock Text="Innehåll i att göra-listan" />
+            <ScrollViewer MaxHeight="400">
+                <ItemsControl ItemsSource="{Binding ToDoItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="vm:ToDoItemViewModel">
+                            <Grid ColumnDefinitions="120,120,120, 120 *" ColumnSpacing="50" Background="{Binding Important}">
+                                <TextBlock Grid.Column="0" Text="{Binding Name}" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" Text="{Binding Location}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="{Binding Date}" VerticalAlignment="Center"/>
+                                <CheckBox Grid.Column="3" Content="Viktig" IsChecked="{Binding Important}" IsHitTestVisible="False"/>
+                                <Button Grid.Column="4" Content="Ta Bort"
+                                        Command="{Binding #Root.((vm:MainViewModel)DataContext)?.RemoveItemCommand}"
+                                        CommandParameter="{Binding .}" 
+                                        VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+
+
+</Window>

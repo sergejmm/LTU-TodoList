@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace TodoList_LTU_Course.Views;
+namespace LTU_Course_Final.Views;
 
 public partial class MainWindow : Window
 {

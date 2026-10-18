@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList-LTU-Course", "TodoList-LTU-Course\TodoList-LTU-Course.csproj", "{2139CF53-138C-4453-90D1-98F2F0D35BDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTU-Course-Final", "LTU-Course-Final\LTU-Course-Final.csproj", "{A0C6BD26-7106-41CA-9A0E-527BC712B5DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2139CF53-138C-4453-90D1-98F2F0D35BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2139CF53-138C-4453-90D1-98F2F0D35BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2139CF53-138C-4453-90D1-98F2F0D35BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2139CF53-138C-4453-90D1-98F2F0D35BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C6BD26-7106-41CA-9A0E-527BC712B5DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C6BD26-7106-41CA-9A0E-527BC712B5DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C6BD26-7106-41CA-9A0E-527BC712B5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C6BD26-7106-41CA-9A0E-527BC712B5DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

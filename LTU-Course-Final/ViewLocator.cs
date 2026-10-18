@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using TodoList_LTU_Course.ViewModels;
+using LTU_Course_Final.ViewModels;
 
-namespace TodoList_LTU_Course;
+namespace LTU_Course_Final;
 
 /// <summary>
 /// Given a view model, returns the corresponding view if possible.

@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace TodoList_LTU_Course;
+namespace LTU_Course_Final;
 
 sealed class Program
 {
