@@ -36,11 +36,18 @@
 
         <StackPanel Grid.Column="1" Orientation="Vertical" Spacing="10">
             <TextBlock Text="Innehåll i att göra-listan" />
+            <Grid ColumnDefinitions="120, 120, 120, 120, *" ColumnSpacing="50">
+                <TextBlock Grid.Column="0" Text="Uppgift"/>
+                <TextBlock Grid.Column="1" Text="Plats"/>
+                <TextBlock Grid.Column="2" Text="Datum"/>
+                <TextBlock Grid.Column="3" Text="Viktig Markerad"/>
+                <TextBlock Grid.Column="4" Text="Ta Bort"/>
+            </Grid>
             <ScrollViewer MaxHeight="400">
                 <ItemsControl ItemsSource="{Binding ToDoItems}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="vm:ToDoItemViewModel">
-                            <Grid ColumnDefinitions="120,120,120, 120 *" ColumnSpacing="50" Background="{Binding Important}">
+                            <Grid ColumnDefinitions="120,120,120, 120 *" ColumnSpacing="50">
                                 <TextBlock Grid.Column="0" Text="{Binding Name}" TextWrapping="Wrap" VerticalAlignment="Center" />
                                 <TextBlock Grid.Column="1" Text="{Binding Location}" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="2" Text="{Binding Date}" VerticalAlignment="Center"/>
